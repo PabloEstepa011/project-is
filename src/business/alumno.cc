@@ -8,6 +8,7 @@ private:
     string nombre;
     string apellidos;
     int edad;
+    string centro;
     string matricula;
 
 public:
