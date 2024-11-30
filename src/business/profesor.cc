@@ -5,8 +5,9 @@ class Profesor{
     private:
         string nombre;
         
+
     public:
 
 
 
-}
+};
