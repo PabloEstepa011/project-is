@@ -45,4 +45,4 @@ public:
     vector<int> getCursoGrados() const { return curso_grados; }
     vector<string> getInscripciones() const { return inscripciones; }
 
-}
+};
