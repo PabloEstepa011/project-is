@@ -3,8 +3,8 @@
 
 #include "gestorAlumno.h"
 #include "gestorProfesor.h"
-#include "intercambio.h"
-#include "planConvalidacion.h"
+#include "../intercambio.h"
+#include "../planConvalidacion.h"
 
 class GestorAdministrador {
 public:
@@ -19,7 +19,7 @@ public:
 
 private:
     // Atributos: Gestores necesarios para las operaciones
-    GestorAlumno gestorAlumno;
+    inscribirPlaza()
     GestorProfesor gestorProfesor;
     // Aquí pueden agregarse más gestores para intercambios y planes
 };

@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "planConvalidacion.h"
+#include "business/planConvalidacion.h"
 
 class PlanConvalidacionData {
 public:

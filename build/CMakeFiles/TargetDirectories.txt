@@ -1,0 +1,3 @@
+/home/i22esalp/Escritorio/is/project-is/build/CMakeFiles/ProjectIS.dir
+/home/i22esalp/Escritorio/is/project-is/build/CMakeFiles/edit_cache.dir
+/home/i22esalp/Escritorio/is/project-is/build/CMakeFiles/rebuild_cache.dir

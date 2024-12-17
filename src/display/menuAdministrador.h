@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <string>
-#include "gestorAlumno.h"
-#include "gestorProfesor.h"
-#include "intercambio.h"
-#include "planConvalidacion.h"
+#include "business/gestores/gestorAlumno.h"
+#include "business/gestores/gestorProfesor.h"
+#include "business/intercambio.h"
+#include "business/planConvalidacion.h"
 
 class MenuAdministrador {
 public:

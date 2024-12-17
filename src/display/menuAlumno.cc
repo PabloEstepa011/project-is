@@ -18,6 +18,7 @@ void menuAlumno() {
         switch (opcion) {
             case 1:
                 std::cout << "Inscribiendo en una plaza...\n";
+              
                 inscribirPlaza(); // Llama a la función del controlador
                 break;
             case 2:
