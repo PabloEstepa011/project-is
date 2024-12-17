@@ -16,13 +16,13 @@ void GestorAdministrador::gestionarAlumnos() {
 
     switch (opcion) {
         case 1:
-            gestorAlumno.añadirAlumno();
+            //gestorAlumno.añadirAlumno();
             break;
         case 2:
-            gestorAlumno.mostrarAlumnos();
+            //gestorAlumno.mostrarAlumnos();
             break;
         case 3:
-            gestorAlumno.eliminarAlumno();
+            //gestorAlumno.eliminarAlumno();
             break;
         default:
             std::cout << "Opción inválida.\n";
@@ -41,13 +41,13 @@ void GestorAdministrador::gestionarProfesores() {
 
     switch (opcion) {
         case 1:
-            gestorProfesor.añadirProfesor();
+            //gestorProfesor.añadirProfesor();
             break;
         case 2:
-            gestorProfesor.mostrarProfesores();
+            //gestorProfesor.mostrarProfesores();
             break;
         case 3:
-            gestorProfesor.eliminarProfesor();
+            //gestorProfesor.eliminarProfesor();
             break;
         default:
             std::cout << "Opción inválida.\n";

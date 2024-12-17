@@ -19,7 +19,7 @@ public:
 
 private:
     // Atributos: Gestores necesarios para las operaciones
-    inscribirPlaza()
+    GestorAlumno gestorAlumno;
     GestorProfesor gestorProfesor;
     // Aquí pueden agregarse más gestores para intercambios y planes
 };

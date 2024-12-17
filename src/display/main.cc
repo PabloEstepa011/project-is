@@ -32,14 +32,14 @@ int main() {
     PlanConvalidacionData planConvalidacionData(archivoPlanesConvalidacion);
 
     // Crear las instancias de los gestores
-    GestorAlumno gestorAlumno(alumnoData);
-    GestorProfesor gestorProfesor(profesorData);
-    GestorAdministrador gestorAdministrador(administradorData);
+    GestorAlumno gestorAlumno;
+    GestorProfesor gestorProfesor;
+    GestorAdministrador gestorAdministrador;
 
     // Crear los menús
-    MenuAlumno menuAlumno(gestorAlumno);
-    MenuProfesor menuProfesor(gestorProfesor);
-    MenuAdministrador menuAdministrador(gestorAdministrador);
+    MenuAlumno menuAlumno;
+    MenuProfesor menuProfesor;
+    MenuAdministrador menuAdministrador;
 
     // Variables para determinar el rol del usuario (Alumno, Profesor, Administrador)
     int opcionRol;

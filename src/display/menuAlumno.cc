@@ -1,43 +1,37 @@
 #include "menuAlumno.h"
 #include <iostream>
-#include "../business/gestores/gestorAlumno.cc" // Controlador para Alumno
 
-void menuAlumno() {
-    int opcion;
+// Constructor
+MenuAlumno::MenuAlumno() {
+    // Inicialización de variables o cualquier proceso que sea necesario
+}
 
-    do {
-        std::cout << "\n--- Menú Alumno ---\n";
-        std::cout << "1. Inscribirse en una plaza\n";
-        std::cout << "2. Anular inscripción\n";
-        std::cout << "3. Confirmar plaza\n";
-        std::cout << "4. Visualizar inscripciones\n";
-        std::cout << "5. Salir\n";
-        std::cout << "Elija una opción: ";
-        std::cin >> opcion;
+// Mostrar el menú principal del alumno
+void MenuAlumno::mostrarMenu() const {
+    std::cout << "==== Menu Alumno ====" << std::endl;
+    std::cout << "1. Inscribir Plaza" << std::endl;
+    std::cout << "2. Anular Plaza" << std::endl;
+    std::cout << "3. Confirmar Plaza" << std::endl;
+    std::cout << "4. Visualizar Inscripciones" << std::endl;
+    std::cout << "Seleccione una opción: ";
+}
 
-        switch (opcion) {
-            case 1:
-                std::cout << "Inscribiendo en una plaza...\n";
-              
-                inscribirPlaza(); // Llama a la función del controlador
-                break;
-            case 2:
-                std::cout << "Anulando inscripción...\n";
-                anularPlaza(); // Llama a la función del controlador
-                break;
-            case 3:
-                std::cout << "Confirmando plaza...\n";
-                confirmarPlaza(); // Llama a la función del controlador
-                break;
-            case 4:
-                std::cout << "Visualizando inscripciones...\n";
-                visualizarInscripciones(); // Llama a la función del controlador
-                break;
-            case 5:
-                std::cout << "Saliendo del menú de alumno...\n";
-                break;
-            default:
-                std::cout << "Opción no válida. Por favor, intente de nuevo.\n";
-        }
-    } while (opcion != 5);
+// Inscribir plaza
+void MenuAlumno::inscribirPlaza() {
+    std::cout << alumnoNombre << " ha inscrito una plaza." << std::endl;
+}
+
+// Anular plaza
+void MenuAlumno::anularPlaza() {
+    std::cout << alumnoNombre << " ha anulado una plaza." << std::endl;
+}
+
+// Confirmar plaza
+void MenuAlumno::confirmarPlaza() {
+    std::cout << alumnoNombre << " ha confirmado una plaza." << std::endl;
+}
+
+// Visualizar inscripciones
+void MenuAlumno::visualizarInscripciones() {
+    std::cout << alumnoNombre << " está visualizando sus inscripciones." << std::endl;
 }

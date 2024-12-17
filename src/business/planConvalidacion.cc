@@ -1,4 +1,4 @@
-#include "planconvalidacion.h"
+#include "planConvalidacion.h"
 #include <iostream>
 
 // Constructor

@@ -153,6 +153,10 @@ CMakeFiles/ProjectIS.dir/src/display/main.cc.o: \
  /usr/include/c++/12/bits/stl_bvector.h \
  /usr/include/c++/12/bits/vector.tcc \
  /home/i22esalp/Escritorio/is/project-is/src/data/alumnoData.h \
+ /usr/include/c++/12/fstream /usr/include/c++/12/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/12/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/12/bits/c++io.h \
+ /usr/include/c++/12/bits/fstream.tcc \
  /home/i22esalp/Escritorio/is/project-is/src/data/profesorData.h \
  /home/i22esalp/Escritorio/is/project-is/src/data/administradorData.h \
  /home/i22esalp/Escritorio/is/project-is/src/data/intercambioData.h \

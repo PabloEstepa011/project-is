@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
 
 // Estructura para representar un alumno
 struct Alumno {
@@ -12,6 +14,9 @@ struct Alumno {
 
 class AlumnoData {
 public:
+    // Constructor
+    AlumnoData(const std::string& archivo);
+
     // Guardar un alumno en el archivo
     static void guardarAlumno(const Alumno& alumno);
 
@@ -20,6 +25,9 @@ public:
 
     // Eliminar un alumno por nombre
     static bool eliminarAlumno(const std::string& nombre);
+
+private:
+    std::string archivoAlumnos; // Ruta del archivo
 };
 
 #endif // ALUMNO_DATA_H
