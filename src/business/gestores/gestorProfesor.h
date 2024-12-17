@@ -4,10 +4,14 @@
 #include <string>
 #include <vector>
 
-// Declaración de funciones para gestionar profesores
-void inscribirPlazaProfesor();
-void anularPlazaProfesor();
-void confirmarPlazaProfesor();
-void visualizarInscripcionesProfesor();
+class GestorProfesor{
+    public:
+        GestorProfesor();
+
+        void inscribirPlazaProfesor();
+        void anularPlazaProfesor();
+        void visualizarInscripcionesProfesor();
+
+}
 
 #endif // GESTORPROFESOR_H
