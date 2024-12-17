@@ -1,25 +1,19 @@
-#ifndef MENUPROFESOR_H
-#define MENUPROFESOR_H
+#ifndef MENU_PROFESOR_H
+#define MENU_PROFESOR_H
 
-#include <string>
+#include "business/gestores/gestorProfesor.h"
 
 class MenuProfesor {
 public:
     // Constructor
     MenuProfesor();
 
-    // Método para mostrar el menú del profesor
-    void mostrarMenu() const;
-
-    // Métodos adicionales relacionados con el menú del profesor
-    void inscribirPlazaProfesor();
-    void anularPlazaProfesor();
-    void confirmarPlazaProfesor();
-    void visualizarInscripcionesProfesor();
+    // Método para mostrar el menú del alumno
+    void mostrarMenu();
 
 private:
-    // Puedes agregar variables privadas si es necesario
-    std::string profesorNombre;
+    // Instancia de GestorAlumno para gestionar la información del alumno
+    GestorProfesor gestorProfesor;
 };
 
-#endif // MENUPROFESOR_H
+#endif // MENU_PROFESOR_H

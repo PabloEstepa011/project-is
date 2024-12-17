@@ -20,7 +20,6 @@ private:
     // Métodos privados para manejar opciones específicas
     void gestionarAlumnos();
     void gestionarProfesores();
-    void gestionarIntercambios();
     void gestionarPlanesConvalidacion();
 
     // Atributos: Gestores necesarios

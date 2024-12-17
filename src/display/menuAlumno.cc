@@ -8,30 +8,23 @@ MenuAlumno::MenuAlumno() {
 
 // Mostrar el menú principal del alumno
 void MenuAlumno::mostrarMenu() const {
+    int opcion;
     std::cout << "==== Menu Alumno ====" << std::endl;
-    std::cout << "1. Inscribir Plaza" << std::endl;
-    std::cout << "2. Anular Plaza" << std::endl;
-    std::cout << "3. Confirmar Plaza" << std::endl;
-    std::cout << "4. Visualizar Inscripciones" << std::endl;
+    std::cout << "1. Visualizar inscripciones\n";
+    std::cout << "2. Inscribir plaza\n";
+    std::cout << "3. Anular plaza\n";
     std::cout << "Seleccione una opción: ";
-}
 
-// Inscribir plaza
-void MenuAlumno::inscribirPlaza() {
-    std::cout << alumnoNombre << " ha inscrito una plaza." << std::endl;
-}
-
-// Anular plaza
-void MenuAlumno::anularPlaza() {
-    std::cout << alumnoNombre << " ha anulado una plaza." << std::endl;
-}
-
-// Confirmar plaza
-void MenuAlumno::confirmarPlaza() {
-    std::cout << alumnoNombre << " ha confirmado una plaza." << std::endl;
-}
-
-// Visualizar inscripciones
-void MenuAlumno::visualizarInscripciones() {
-    std::cout << alumnoNombre << " está visualizando sus inscripciones." << std::endl;
+    switch (opcion) {
+        case 1:
+            //gestorAlumno.visualizarInscripciones();
+            break;
+        case 2:
+            //gestorAlumno.inscribirPlaza();
+            break;
+        case 3:
+            //gestorAlumno.anularPlaza();
+            break;
+        default:
+    }
 }

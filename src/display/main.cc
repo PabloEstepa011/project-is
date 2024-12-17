@@ -44,7 +44,7 @@ int main() {
     // Variables para determinar el rol del usuario (Alumno, Profesor, Administrador)
     int opcionRol;
     
-    cout << "Seleccione el rol:\n";
+    cout << "Seleccione el rol al que pertence:\n";
     cout << "1. Alumno\n";
     cout << "2. Profesor\n";
     cout << "3. Administrador\n";
@@ -71,4 +71,4 @@ int main() {
     }
 
     return 0;
-}GestorAlumno gestorAlumno;
+};

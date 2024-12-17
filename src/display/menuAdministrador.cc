@@ -11,9 +11,8 @@ void MenuAdministrador::mostrarMenu() {
         std::cout << "\n==== MENU ADMINISTRADOR ====\n";
         std::cout << "1. Gestionar Alumnos\n";
         std::cout << "2. Gestionar Profesores\n";
-        std::cout << "3. Gestionar Intercambios\n";
-        std::cout << "4. Gestionar Planes de Convalidación\n";
-        std::cout << "5. Salir\n";
+        std::cout << "3. Gestionar Planes de Convalidación\n";
+        std::cout << "4. Salir\n";
         std::cout << "Seleccione una opción: ";
         std::cin >> opcion;
 
@@ -25,28 +24,25 @@ void MenuAdministrador::mostrarMenu() {
                 gestionarProfesores();
                 break;
             case 3:
-                gestionarIntercambios();
-                break;
-            case 4:
                 gestionarPlanesConvalidacion();
                 break;
-            case 5:
+            case 4:
                 std::cout << "Saliendo del menú administrador...\n";
                 break;
             default:
                 std::cout << "Opción inválida. Inténtelo de nuevo.\n";
                 break;
         }
-    } while (opcion != 5);
+    } while (opcion != 4);
 }
 
 // Método para gestionar alumnos
 void MenuAdministrador::gestionarAlumnos() {
     int opcion;
     std::cout << "\n==== GESTIONAR ALUMNOS ====\n";
-    std::cout << "1. Añadir Alumno\n";
-    std::cout << "2. Mostrar Alumnos\n";
-    std::cout << "3. Eliminar Alumno\n";
+    std::cout << "1. Añadir alumno\n";
+    std::cout << "2. Borrar alumno\n";
+    std::cout << "3. Listar alumno\n";
     std::cout << "Seleccione una opción: ";
     std::cin >> opcion;
 
@@ -69,9 +65,9 @@ void MenuAdministrador::gestionarAlumnos() {
 void MenuAdministrador::gestionarProfesores() {
     int opcion;
     std::cout << "\n==== GESTIONAR PROFESORES ====\n";
-    std::cout << "1. Añadir Profesor\n";
-    std::cout << "2. Mostrar Profesores\n";
-    std::cout << "3. Eliminar Profesor\n";
+    std::cout << "1. Añadir profesor\n";
+    std::cout << "2. Borrar profesor\n";
+    std::cout << "3. Listar profesor\n";
     std::cout << "Seleccione una opción: ";
     std::cin >> opcion;
 
@@ -88,16 +84,4 @@ void MenuAdministrador::gestionarProfesores() {
         default:
             std::cout << "Opción inválida.\n";
     }
-}
-
-// Método para gestionar intercambios
-void MenuAdministrador::gestionarIntercambios() {
-    std::cout << "\n==== GESTIONAR INTERCAMBIOS ====\n";
-    std::cout << "Funcionalidad en desarrollo...\n";
-}
-
-// Método para gestionar planes de convalidación
-void MenuAdministrador::gestionarPlanesConvalidacion() {
-    std::cout << "\n==== GESTIONAR PLANES DE CONVALIDACION ====\n";
-    std::cout << "Funcionalidad en desarrollo...\n";
 }

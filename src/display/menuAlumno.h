@@ -1,25 +1,19 @@
 #ifndef MENU_ALUMNO_H
 #define MENU_ALUMNO_H
 
-#include <string>
+#include "business/gestores/gestorAlumno.h"
 
 class MenuAlumno {
 public:
     // Constructor
     MenuAlumno();
 
-    // Función que muestra el menú del alumno
-    void mostrarMenu() const;
-
-    // Otras funciones relacionadas con el menú del alumno
-    void inscribirPlaza();
-    void anularPlaza();
-    void confirmarPlaza();
-    void visualizarInscripciones();
+    // Método para mostrar el menú del alumno
+    void mostrarMenu();
 
 private:
-    // Puedes agregar variables privadas si es necesario, como datos de alumno
-    std::string alumnoNombre;
+    // Instancia de GestorAlumno para gestionar la información del alumno
+    GestorAlumno gestorAlumno;
 };
 
 #endif // MENU_ALUMNO_H
