@@ -1,71 +1,66 @@
-#include "alumnoData.h"
+#include "AlumnoData.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
-// Constructor que toma la ruta del archivo donde se guardarán los datos
-AlumnoData::AlumnoData(const std::string& archivo) : archivoAlumnos(archivo) {
-    // Puedes agregar alguna lógica para verificar si el archivo existe o inicializarlo si no existe
-    std::ifstream archivoTest(archivoAlumnos);
-    if (!archivoTest.is_open()) {
-        std::ofstream nuevoArchivo(archivoAlumnos);
-        if (!nuevoArchivo.is_open()) {
-            std::cerr << "No se pudo crear el archivo: " << archivoAlumnos << std::endl;
-        } else {
-            std::cout << "Archivo creado con éxito: " << archivoAlumnos << std::endl;
+// Constructor
+AlumnoData::AlumnoData(const std::string& archivo) : archivo(archivo) {}
+
+// Leer datos desde el archivo
+Alumno AlumnoData::leerDatos() const {
+    std::ifstream archivoEntrada(archivo);
+
+    if (!archivoEntrada) {
+        std::cerr << "No se pudo abrir el archivo: " << archivo << std::endl;
+        return Alumno("", "", 0, 0, "", "", 0);
+    }
+
+    std::string nombre, apellidos, correo, grados;
+    int DNI, telefono, cursoGrado;
+    std::vector<std::string> inscripciones;
+
+    // Leer datos básicos del alumno
+    std::getline(archivoEntrada, nombre);
+    std::getline(archivoEntrada, apellidos);
+    archivoEntrada >> DNI >> telefono >> cursoGrado;
+    archivoEntrada.ignore(); // Consumir el salto de línea
+    std::getline(archivoEntrada, correo);
+    std::getline(archivoEntrada, grados);
+
+    // Leer las inscripciones
+    std::string inscripcion;
+    while (std::getline(archivoEntrada, inscripcion)) {
+        if (!inscripcion.empty()) {
+            inscripciones.push_back(inscripcion);
         }
     }
-    archivoTest.close();
+
+    archivoEntrada.close();
+    return Alumno(nombre, apellidos, DNI, telefono, correo, grados, cursoGrado, inscripciones);
 }
 
-// Método estático para guardar un alumno
-void AlumnoData::guardarAlumno(const Alumno& alumno) {
-    std::ofstream archivo(archivoAlumnos);
-    if (archivo.is_open()) {
-        archivo << alumno.nombre << "," << alumno.curso << std::endl;
-        archivo.close();
-    } else {
-        std::cerr << "No se pudo abrir el archivo para guardar el alumno." << std::endl;
-    }
-}
+// Escribir datos al archivo
+void AlumnoData::escribirDatos(const Alumno& alumno) const {
+    std::ofstream archivoSalida(archivo, std::ios::trunc); // Sobreescribir archivo
 
-// Método estático para leer todos los alumnos del archivo
-std::vector<Alumno> AlumnoData::leerAlumnos() {
-    std::vector<Alumno> alumnos;
-    std::ifstream archivo(archivoAlumnos);
-    std::string linea;
-    
-    while (std::getline(archivo, linea)) {
-        size_t separador = linea.find(',');
-        if (separador != std::string::npos) {
-            Alumno alumno;
-            alumno.nombre = linea.substr(0, separador);
-            alumno.curso = linea.substr(separador + 1);
-            alumnos.push_back(alumno);
-        }
+    if (!archivoSalida) {
+        std::cerr << "No se pudo abrir el archivo: " << archivo << std::endl;
+        return;
     }
-    archivo.close();
-    return alumnos;
-}
 
-// Método estático para eliminar un alumno por nombre
-bool AlumnoData::eliminarAlumno(const std::string& nombre) {
-    std::vector<Alumno> alumnos = leerAlumnos();
-    bool encontrado = false;
-    
-    // Filtramos los alumnos para no incluir el que queremos eliminar
-    alumnos.erase(
-        std::remove_if(alumnos.begin(), alumnos.end(), [&nombre](const Alumno& alumno) {
-            return alumno.nombre == nombre;
-        }),
-        alumnos.end()
-    );
+    // Guardar datos básicos del alumno
+    archivoSalida << alumno.getNombre() << "\n";
+    archivoSalida << alumno.getApellidos() << "\n";
+    archivoSalida << alumno.getDNI() << "\n";
+    archivoSalida << alumno.getTelefono() << "\n";
+    archivoSalida << alumno.getCursoGrado() << "\n";
+    archivoSalida << alumno.getCorreo() << "\n";
+    archivoSalida << alumno.getGradosMatriculado() << "\n";
 
-    // Si el tamaño de los alumnos es distinto, significa que eliminamos al alumno
-    if (alumnos.size() != leerAlumnos().size()) {
-        std::ofstream archivo(archivoAlumnos);
-        for (const Alumno& alumno : alumnos) {
-            archivo << alumno.nombre << "," << alumno.curso << std::endl;
-        }
-        archivo.close();
-        encontrado = true;
+    // Guardar inscripciones
+    for (const auto& inscripcion : alumno.inscripciones) {
+        archivoSalida << inscripcion << "\n";
     }
-    return encontrado;
+
+    archivoSalida.close();
 }

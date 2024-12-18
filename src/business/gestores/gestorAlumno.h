@@ -1,14 +1,21 @@
-#ifndef GESTOR_ALUMNO_H
-#define GESTOR_ALUMNO_H
+#ifndef GESTORALUMNO_H
+#define GESTORALUMNO_H
+
+#include <string>
+#include <iostream>
+#include <alumno.h>
 
 class GestorAlumno{
     public:
         GestorAlumno();
 
-        void inscribirPlaza();
-        void anularPlaza();
-        void visualizarInscripciones();
+        void inscribirPlazaAlumno();
+        void anularPlazaAlumno();
+        void visualizarInscripcionesAlumno();
+
+    private:
+        Alumno alumno;
 
 };
 
-#endif
+#endif // GESTORPROFESOR_H
