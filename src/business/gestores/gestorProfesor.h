@@ -12,6 +12,6 @@ class GestorProfesor{
         void anularPlazaProfesor();
         void visualizarInscripcionesProfesor();
 
-}
+};
 
 #endif // GESTORPROFESOR_H

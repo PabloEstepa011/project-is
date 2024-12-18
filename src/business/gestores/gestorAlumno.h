@@ -9,6 +9,6 @@ class GestorAlumno{
         void anularPlaza();
         void visualizarInscripciones();
 
-}
+};
 
 #endif

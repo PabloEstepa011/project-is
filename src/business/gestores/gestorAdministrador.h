@@ -1,6 +1,8 @@
 #ifndef GESTORADMINISTRADOR_H
 #define GESTORADMINISTRADOR_H
 
+#include "gestorAlumno.h"
+#include "gestorProfesor.h"
 
 class GestorAdministrador {
 public:

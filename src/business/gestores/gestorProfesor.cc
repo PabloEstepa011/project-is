@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 
-
+GestorProfesor::GestorProfesor(){}
 
 // Implementación de inscribir plaza
 void GestorProfesor::inscribirPlazaProfesor() {

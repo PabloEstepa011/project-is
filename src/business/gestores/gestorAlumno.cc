@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 
-
-
+GestorAlumno::GestorAlumno(){}
 
 // Función para inscribir a un alumno en una plaza
 void GestorAlumno::inscribirPlaza(){
@@ -11,7 +10,7 @@ void GestorAlumno::inscribirPlaza(){
 }
 
 // Función para anular la inscripción de un alumno
-void GestorAlumno:anularPlaza(){
+void GestorAlumno::anularPlaza(){
 
 }
 
@@ -21,6 +20,6 @@ void confirmarPlaza(){
 }
 
 // Función para visualizar inscripciones
-void GestionarALumno::visualizarInscripciones(){
+void GestorAlumno::visualizarInscripciones(){
 
 }
