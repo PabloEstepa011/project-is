@@ -15,14 +15,14 @@ struct Administrador {
 class AdministradorData {
 public:
     // Constructor
-    AdministradorData(const std::string& archivo);
+    AdministradorData();
 
     // Métodos
     std::vector<Administrador> cargarAdministradores();
     void guardarAdministradores(const std::vector<Administrador>& administradores);
 
 private:
-    std::string archivoAdministradores; // Ruta del archivo
+    const std::string archivoAdministradores = "bbdd/admin.txt"; // Nombre del archivo
 };
 
 #endif // ADMINISTRADORDATA_H

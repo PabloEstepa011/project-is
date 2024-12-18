@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "business/intercambio.h"
+#include "../business/intercambio.h"
 
 class IntercambioData {
 public:

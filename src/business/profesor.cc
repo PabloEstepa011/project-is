@@ -8,33 +8,6 @@ Profesor::Profesor(const std::string& nombre, const std::string& apellidos, int 
       correo(correo), grados_profesa(grados_profesa) {}
 
 // Métodos de gestión de inscripciones
-void Profesor::inscribirPlaza(const std::string& plaza) {
-    inscripciones.push_back(plaza);
-    std::cout << "Plaza '" << plaza << "' inscrita correctamente.\n";
-}
-
-void Profesor::anularPlaza(const std::string& plaza) {
-    for (auto it = inscripciones.begin(); it != inscripciones.end(); ++it) {
-        if (*it == plaza) {
-            inscripciones.erase(it);
-            std::cout << "Plaza '" << plaza << "' anulada correctamente.\n";
-            return;
-        }
-    }
-    std::cout << "Plaza '" << plaza << "' no encontrada.\n";
-}
-
-void Profesor::confirmarPlaza(const std::string& plaza) {
-    std::cout << "Plaza '" << plaza << "' confirmada para el profesor.\n";
-}
-
-void Profesor::visualizarInscripciones() const {
-    std::cout << "Inscripciones del profesor " << nombre << " " << apellidos << ":\n";
-    for (const auto& plaza : inscripciones) {
-        std::cout << "- " << plaza << "\n";
-    }
-}
-
 // Métodos getters
 std::string Profesor::getNombre() const {
     return nombre;
@@ -58,4 +31,33 @@ std::string Profesor::getCorreo() const {
 
 std::string Profesor::getGradosProfesa() const {
     return grados_profesa;
+}
+
+// Setters
+void Profesor::setNombre(const std::string& nombre) {
+    this->nombre = nombre;
+}
+
+void Profesor::setApellidos(const std::string& apellidos) {
+    this->apellidos = apellidos;
+}
+
+void Profesor::setDNI(int DNI) {
+    this->DNI = DNI;
+}
+
+void Profesor::setTelefono(int telefono) {
+    this->telefono = telefono;
+}
+
+void Profesor::setCorreo(const std::string& correo) {
+    this->correo = correo;
+}
+
+void Profesor::setGradosProfesa(const std::string& gradosprofesa) {
+    this->grados_profesa = gradosprofesa;
+}
+
+void Profesor::setInscripciones(const std::vector<std::string>& inscripciones) {
+    this->inscripciones = inscripciones;
 }

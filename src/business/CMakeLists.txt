@@ -13,7 +13,8 @@ set(BUSINESS_SOURCES
 add_library(business STATIC ${BUSINESS_SOURCES})
 
 # Incluir directorios para los archivos de cabecera
-target_include_directories(business PUBLIC ${CMAKE_SOURCE_DIR}/src/business)
+target_include_directories(business PUBLIC  ${CMAKE_CURRENT_LIST_DIR}
+                                            ${PROJECT_SOURCE_DIR}/src/business)
 
 # Añadir subdirectorios de los gestores
 add_subdirectory(gestores)

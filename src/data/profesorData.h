@@ -1,8 +1,9 @@
 #ifndef PROFESORDATA_H
 #define PROFESORDATA_H
 
-#include "business/profesor.h"
+#include "../business/profesor.h"
 #include <string>
+#include <list>
 
 class ProfesorData {
 private:
@@ -11,8 +12,8 @@ private:
 public:
     
     // Métodos para leer y escribir datos
-    Profesor leerDatos() const;
-    void escribirDatos(const Profesor& profesor) const;
+    std::list<Profesor> leerDatos() const;
+    void escribirDatos(Profesor profesor);
 };
 
 #endif // PROFESORDATA_H

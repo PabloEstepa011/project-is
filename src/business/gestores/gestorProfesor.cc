@@ -1,22 +1,18 @@
 #include "gestorProfesor.h"
-#include "profesorData.h"
+#include "../../data/profesorData.h"
 #include <iostream>
 #include <algorithm>
 
 // Constructor
-GestorProfesor::GestorProfesor()
-    : profesor("", "", 0, 0, "", ""), profesorData("profesores.txt") {
-    // Cargar datos desde el archivo al inicio
-    profesor = profesorData.leerDatos();
-}
 
 // Inscribir a un profesor en una plaza
 void GestorProfesor::inscribirPlazaProfesor() {
+    ProfesorData profesorData;
     std::string nuevaInscripcion;
     std::cout << "Introduce la plaza a la que deseas inscribirte: ";
     std::getline(std::cin, nuevaInscripcion);
 
-    profesor.inscripciones.push_back(nuevaInscripcion); // Agregar a la lista de inscripciones
+    profesor.getInscripciones().push_back(nuevaInscripcion); // Agregar a la lista de inscripciones
     std::cout << "Inscripción añadida: " << nuevaInscripcion << std::endl;
 
     // Guardar cambios en el archivo
@@ -25,11 +21,12 @@ void GestorProfesor::inscribirPlazaProfesor() {
 
 // Anular una inscripción de un profesor
 void GestorProfesor::anularPlazaProfesor() {
+    ProfesorData profesorData;
     std::string plaza;
     std::cout << "Introduce la plaza que deseas anular: ";
     std::getline(std::cin, plaza);
 
-    auto& inscripciones = profesor.inscripciones;
+    auto inscripciones = profesor.getInscripciones();
     auto it = std::find(inscripciones.begin(), inscripciones.end(), plaza);
 
     if (it != inscripciones.end()) {
@@ -45,7 +42,8 @@ void GestorProfesor::anularPlazaProfesor() {
 
 // Visualizar todas las inscripciones de un profesor
 void GestorProfesor::visualizarInscripcionesProfesor() {
-    const auto& inscripciones = profesor.inscripciones;
+    ProfesorData profesorData;
+    auto inscripciones = profesor.getInscripciones();
 
     if (inscripciones.empty()) {
         std::cout << "No hay inscripciones activas." << std::endl;

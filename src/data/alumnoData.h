@@ -1,19 +1,21 @@
 #ifndef ALUMNODATA_H
 #define ALUMNODATA_H
 
-#include "business/alumno.h"
+#include "../business/alumno.h"
 #include <string>
+#include <list>
 
 class AlumnoData {
 private:
-    std::string archivo; // Nombre del archivo
+    const std::string archivo = "bbdd/alumnos.txt"; // Nombre del archivo
 
 public:
-    explicit AlumnoData(const std::string& archivo);
+    explicit AlumnoData();
     
     // Métodos para leer y escribir datos
-    Alumno leerDatos() const;
-    void escribirDatos(const Alumno& alumno) const;
+    std::list<Alumno> leerDatos() const;
+    bool escribirDatos(Alumno alumno);
+
 };
 
 #endif // ALUMNODATA_H

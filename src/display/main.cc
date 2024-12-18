@@ -1,17 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "data/alumnoData.h"
-#include "data/profesorData.h"
-#include "data/administradorData.h"
-#include "data/intercambioData.h"
-#include "data/planConvalidacionData.h"
-#include "business/gestores/gestorAlumno.h"
-#include "business/gestores/gestorProfesor.h"
-#include "business/gestores/gestorAdministrador.h"
-#include "display/menuAlumno.h"
-#include "display/menuProfesor.h"
-#include "display/menuAdministrador.h"
+#include "../data/alumnoData.h"
+#include "../data/profesorData.h"
+#include "../data/administradorData.h"
+#include "../data/intercambioData.h"
+#include "../data/planConvalidacionData.h"
+#include "menuAlumno.h"
+#include "menuProfesor.h"
+#include "menuAdministrador.h"
 
 
 using namespace std;
@@ -25,16 +22,10 @@ int main() {
     string archivoPlanesConvalidacion = "data/bbdd/planesConvalidacion.txt";
 
     // Crear las instancias de las clases de gestión de datos
-    AlumnoData alumnoData(archivoAlumnos);
-    ProfesorData profesorData(archivoProfesores);
-    AdministradorData administradorData(archivoAdministradores);
-    IntercambioData intercambioData(archivoIntercambios);
-    PlanConvalidacionData planConvalidacionData(archivoPlanesConvalidacion);
+    AlumnoData alumnoData;
+    ProfesorData profesorData;
+    AdministradorData administradorData;
 
-    // Crear las instancias de los gestores
-    GestorAlumno gestorAlumno;
-    GestorProfesor gestorProfesor;
-    GestorAdministrador gestorAdministrador;
 
     // Crear los menús
     MenuAlumno menuAlumno;

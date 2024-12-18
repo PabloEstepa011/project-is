@@ -8,7 +8,7 @@ PlanConvalidacionData::PlanConvalidacionData(const std::string& archivo) : archi
 
 // Método para cargar los planes de convalidación desde el archivo
 std::vector<PlanConvalidacion> PlanConvalidacionData::cargarPlanesConvalidacion() {
-    std::vector<PlanConvalidacion> planesConvalidacion;
+/*     std::vector<PlanConvalidacion> planesConvalidacion;
     std::ifstream archivo(archivoPlanesConvalidacion);
 
     if (!archivo.is_open()) {
@@ -25,12 +25,12 @@ std::vector<PlanConvalidacion> PlanConvalidacionData::cargarPlanesConvalidacion(
     }
 
     archivo.close();
-    return planesConvalidacion;
+    return planesConvalidacion; */
 }
 
 // Método para guardar los planes de convalidación en el archivo
 void PlanConvalidacionData::guardarPlanesConvalidacion(const std::vector<PlanConvalidacion>& planesConvalidacion) {
-    std::ofstream archivo(archivoPlanesConvalidacion);
+    /* std::ofstream archivo(archivoPlanesConvalidacion);
 
     if (!archivo.is_open()) {
         std::cerr << "Error al abrir el archivo para escribir: " << archivoPlanesConvalidacion << "\n";
@@ -42,5 +42,5 @@ void PlanConvalidacionData::guardarPlanesConvalidacion(const std::vector<PlanCon
                 << plan.estado << "\n";
     }
 
-    archivo.close();
+    archivo.close(); */
 }

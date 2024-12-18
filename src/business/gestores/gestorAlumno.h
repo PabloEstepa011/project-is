@@ -3,15 +3,15 @@
 
 #include <string>
 #include <iostream>
-#include <business/alumno.h>
+#include "../alumno.h"
 
 class GestorAlumno{
     public:
         GestorAlumno();
 
-        void inscribirPlazaAlumno();
-        void anularPlazaAlumno();
-        void visualizarInscripcionesAlumno();
+        void inscribirPlaza();
+        void anularPlaza();
+        void visualizarInscripciones();
 
     private:
         Alumno alumno;

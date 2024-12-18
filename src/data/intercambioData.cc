@@ -8,7 +8,7 @@ IntercambioData::IntercambioData(const std::string& archivo) : archivoIntercambi
 
 // Método para cargar los intercambios desde el archivo
 std::vector<Intercambio> IntercambioData::cargarIntercambios() {
-    std::vector<Intercambio> intercambios;
+    /* std::vector<Intercambio> intercambios;
     std::ifstream archivo(archivoIntercambios);
 
     if (!archivo.is_open()) {
@@ -26,12 +26,12 @@ std::vector<Intercambio> IntercambioData::cargarIntercambios() {
     }
 
     archivo.close();
-    return intercambios;
+    return intercambios; */
 }
 
 // Método para guardar los intercambios en el archivo
 void IntercambioData::guardarIntercambios(const std::vector<Intercambio>& intercambios) {
-    std::ofstream archivo(archivoIntercambios);
+    /* std::ofstream archivo(archivoIntercambios);
 
     if (!archivo.is_open()) {
         std::cerr << "Error al abrir el archivo para escribir: " << archivoIntercambios << "\n";
@@ -43,5 +43,5 @@ void IntercambioData::guardarIntercambios(const std::vector<Intercambio>& interc
                 << intercambio.fecha << " " << intercambio.estado << "\n";
     }
 
-    archivo.close();
+    archivo.close(); */
 }

@@ -1,6 +1,6 @@
 #include "gestorAdministrador.h"
-#include "data/alumnoData.h"
-#include "data/profesorData.h"
+#include "../../data/alumnoData.h"
+#include "../../data/profesorData.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -8,11 +8,11 @@
 
 // Constructor
 GestorAdministrador::GestorAdministrador()
-    : alumno("", "", 0, 0, "", "", 0), profesor("", "", 0, 0, "", ""), 
-      alumnoData("alumnos.txt"), profesorData("profesores.txt") {}
+    : alumno("", "", 0, 0, "", "", 0), profesor("", "", 0, 0, "", "") {}
 
 // Función para añadir un alumno
 void GestorAdministrador::añadirAlumno() {
+    AlumnoData alumnoData;
     std::string nombre, apellidos, correo, gradosMatriculado;
     int DNI, telefono, cursoGrado;
 
@@ -34,27 +34,31 @@ void GestorAdministrador::añadirAlumno() {
 
 // Función para borrar un alumno
 void GestorAdministrador::borrarAlumno() {
+    AlumnoData alumnoData;
     int DNI;
     std::cout << "Introduce el DNI del alumno que deseas borrar: ";
     std::cin >> DNI;
     std::cin.ignore(); // Consumir el salto de línea
 
     // Leer todos los alumnos y eliminar el que tenga el DNI dado
-    std::list<Alumno> alumnos = alumnoData.leerTodos();
+    std::list<Alumno> alumnos = alumnoData.leerDatos();
     size_t original_size = alumnos.size();
     alumnos.remove_if([DNI](const Alumno& a) { return a.getDNI() == DNI; });
 
-    if (alumnos.size() < original_size) {
-        alumnoData.escribirTodos(alumnos); // Actualizar el archivo
-        std::cout << "Alumno borrado correctamente.\n";
-    } else {
-        std::cout << "No se encontró un alumno con ese DNI.\n";
+    for(Alumno alumno: alumnos){
+        if (alumnos.size() < original_size) {
+            alumnoData.escribirDatos(alumno); // Actualizar el archivo
+            std::cout << "Alumno borrado correctamente.\n";
+        } else {
+            std::cout << "No se encontró un alumno con ese DNI.\n";
+        }
     }
 }
 
 // Función para listar alumnos
 void GestorAdministrador::listarAlumno() {
-    std::list<Alumno> alumnos = alumnoData.leerTodos();
+    AlumnoData alumnoData;
+    std::list<Alumno> alumnos = alumnoData.leerDatos();
     if (alumnos.empty()) {
         std::cout << "No hay alumnos registrados.\n";
     } else {
@@ -70,6 +74,7 @@ void GestorAdministrador::listarAlumno() {
 
 // Función para añadir un profesor
 void GestorAdministrador::añadirProfesor() {
+    ProfesorData profesorData;
     std::string nombre, apellidos, correo, gradosProfesa;
     int DNI, telefono;
 
@@ -89,28 +94,31 @@ void GestorAdministrador::añadirProfesor() {
 
 // Función para borrar un profesor
 void GestorAdministrador::borrarProfesor() {
+    ProfesorData profesorData;
     int DNI;
     std::cout << "Introduce el DNI del profesor que deseas borrar: ";
     std::cin >> DNI;
     std::cin.ignore(); // Consumir el salto de línea
 
     // Leer todos los profesores y eliminar el que tenga el DNI dado
-    std::list<Profesor> profesores = profesorData.leerTodos();
+    std::list<Profesor> profesores = profesorData.leerDatos();
     size_t original_size = profesores.size();
     profesores.remove_if([DNI](const Profesor& p) { return p.getDNI() == DNI; });
-
-    if (profesores.size() < original_size) {
-        profesorData.escribirTodos(profesores); // Actualizar el archivo
-        std::cout << "Profesor borrado correctamente.\n";
-    } else {
-        std::cout << "No se encontró un profesor con ese DNI.\n";
+    
+    for(Profesor profesor : profesores){
+        if (profesores.size() < original_size) {
+            profesorData.escribirDatos(profesor); // Actualizar el archivo
+            std::cout << "Profesor borrado correctamente.\n";
+        } else {
+            std::cout << "No se encontró un profesor con ese DNI.\n";
+        }
     }
 }
 
 // Función para listar profesores
 void GestorAdministrador::listarProfesor() {
-    
-    std::list<Profesor> profesores = profesorData.leerTodos();
+    ProfesorData profesorData;    
+    std::list<Profesor> profesores = profesorData.leerDatos();
     if (profesores.empty()) {
         std::cout << "No hay profesores registrados.\n";
     } else {
