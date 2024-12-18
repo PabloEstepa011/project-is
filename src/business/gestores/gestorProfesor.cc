@@ -7,7 +7,8 @@
 GestorProfesor::GestorProfesor(){}
 
 // Implementación de inscribir plaza
-void GestorProfesor::inscribirPlazaProfesor() {
+void GestorProfesor::inscribirPlazaProfesor(){
+    
 }
 
 // Implementación de anular plaza

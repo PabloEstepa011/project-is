@@ -1,7 +1,19 @@
-#ifndef MENUPROFESOR_H
-#define MENUPROFESOR_H
+#ifndef MENU_PROFESOR_H
+#define MENU_PROFESOR_H
 
-// Declaración de la función para mostrar el menú del profesor
-void mostrarMenuProfesor();
+#include "business/gestores/gestorProfesor.h"
 
-#endif // MENUPROFESOR_H
+class MenuProfesor {
+public:
+    // Constructor
+    MenuProfesor();
+
+    // Método para mostrar el menú del alumno
+    void mostrarMenu();
+
+private:
+    // Instancia de GestorAlumno para gestionar la información del alumno
+    GestorProfesor gestorProfesor;
+};
+
+#endif // MENU_PROFESOR_H

@@ -1,17 +1,18 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "alumnoData.h"
-#include "profesorData.h"
-#include "administradorData.h"
-#include "intercambioData.h"
-#include "planConvalidacionData.h"
-#include "gestorAlumno.h"
-#include "gestorProfesor.h"
-#include "gestorAdministrador.h"
-#include "menuAlumno.h"
-#include "menuProfesor.h"
-#include "menuAdministrador.h"
+#include "data/alumnoData.h"
+#include "data/profesorData.h"
+#include "data/administradorData.h"
+#include "data/intercambioData.h"
+#include "data/planConvalidacionData.h"
+#include "business/gestores/gestorAlumno.h"
+#include "business/gestores/gestorProfesor.h"
+#include "business/gestores/gestorAdministrador.h"
+#include "display/menuAlumno.h"
+#include "display/menuProfesor.h"
+#include "display/menuAdministrador.h"
+
 
 using namespace std;
 
@@ -31,19 +32,19 @@ int main() {
     PlanConvalidacionData planConvalidacionData(archivoPlanesConvalidacion);
 
     // Crear las instancias de los gestores
-    GestorAlumno gestorAlumno(alumnoData);
-    GestorProfesor gestorProfesor(profesorData);
-    GestorAdministrador gestorAdministrador(administradorData);
+    GestorAlumno gestorAlumno;
+    GestorProfesor gestorProfesor;
+    GestorAdministrador gestorAdministrador;
 
     // Crear los menús
-    MenuAlumno menuAlumno(gestorAlumno);
-    MenuProfesor menuProfesor(gestorProfesor);
-    MenuAdministrador menuAdministrador(gestorAdministrador);
+    MenuAlumno menuAlumno;
+    MenuProfesor menuProfesor;
+    MenuAdministrador menuAdministrador;
 
     // Variables para determinar el rol del usuario (Alumno, Profesor, Administrador)
     int opcionRol;
     
-    cout << "Seleccione el rol:\n";
+    cout << "Seleccione el rol al que pertence:\n";
     cout << "1. Alumno\n";
     cout << "2. Profesor\n";
     cout << "3. Administrador\n";
@@ -70,4 +71,4 @@ int main() {
     }
 
     return 0;
-}
+};
