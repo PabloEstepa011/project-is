@@ -1,47 +1,58 @@
 #include "gestorProfesor.h"
+#include "profesorData.h"
 #include <iostream>
-#include <algorithm>  // Para std::find
+#include <algorithm>
 
-// Constructor por defecto
-GestorProfesor::GestorProfesor() {
-    // Inicialización de atributos si es necesario
+// Constructor
+GestorProfesor::GestorProfesor()
+    : profesor("", "", 0, 0, "", ""), profesorData("profesores.txt") {
+    // Cargar datos desde el archivo al inicio
+    profesor = profesorData.leerDatos();
 }
 
-// Método para inscribir una plaza para un profesor
-void GestorProfesor::inscribirPlazaProfesor(const std::string& plaza) {
-    plazasInscritasProfesor.push_back(plaza);
-    std::cout << "Plaza " << plaza << " inscrita correctamente para el profesor." << std::endl;
+// Inscribir a un profesor en una plaza
+void GestorProfesor::inscribirPlazaProfesor() {
+    std::string nuevaInscripcion;
+    std::cout << "Introduce la plaza a la que deseas inscribirte: ";
+    std::getline(std::cin, nuevaInscripcion);
+
+    profesor.inscripciones.push_back(nuevaInscripcion); // Agregar a la lista de inscripciones
+    std::cout << "Inscripción añadida: " << nuevaInscripcion << std::endl;
+
+    // Guardar cambios en el archivo
+    profesorData.escribirDatos(profesor);
 }
 
-// Método para anular una plaza para un profesor
-void GestorProfesor::anularPlazaProfesor(const std::string& plaza) {
-    auto it = std::find(plazasInscritasProfesor.begin(), plazasInscritasProfesor.end(), plaza);
-    if (it != plazasInscritasProfesor.end()) {
-        plazasInscritasProfesor.erase(it);
-        std::cout << "Plaza " << plaza << " anulada correctamente para el profesor." << std::endl;
+// Anular una inscripción de un profesor
+void GestorProfesor::anularPlazaProfesor() {
+    std::string plaza;
+    std::cout << "Introduce la plaza que deseas anular: ";
+    std::getline(std::cin, plaza);
+
+    auto& inscripciones = profesor.inscripciones;
+    auto it = std::find(inscripciones.begin(), inscripciones.end(), plaza);
+
+    if (it != inscripciones.end()) {
+        inscripciones.erase(it);
+        std::cout << "Inscripción anulada: " << plaza << std::endl;
+
+        // Guardar cambios en el archivo
+        profesorData.escribirDatos(profesor);
     } else {
-        std::cout << "Plaza " << plaza << " no encontrada para el profesor." << std::endl;
+        std::cout << "No se encontró la inscripción: " << plaza << std::endl;
     }
 }
 
-// Método para confirmar una plaza para un profesor
-void GestorProfesor::confirmarPlazaProfesor(const std::string& plaza) {
-    auto it = std::find(plazasInscritasProfesor.begin(), plazasInscritasProfesor.end(), plaza);
-    if (it != plazasInscritasProfesor.end()) {
-        std::cout << "Plaza " << plaza << " confirmada para el profesor." << std::endl;
-    } else {
-        std::cout << "Plaza " << plaza << " no encontrada para el profesor." << std::endl;
-    }
-}
+// Visualizar todas las inscripciones de un profesor
+void GestorProfesor::visualizarInscripcionesProfesor() {
+    const auto& inscripciones = profesor.inscripciones;
 
-// Método para visualizar todas las inscripciones de los profesores
-void GestorProfesor::visualizarInscripcionesProfesor() const {
-    if (plazasInscritasProfesor.empty()) {
-        std::cout << "No hay inscripciones para el profesor." << std::endl;
+    if (inscripciones.empty()) {
+        std::cout << "No hay inscripciones activas." << std::endl;
     } else {
-        std::cout << "Plazas inscritas para el profesor:" << std::endl;
-        for (const auto& plaza : plazasInscritasProfesor) {
-            std::cout << "- " << plaza << std::endl;
+        std::cout << "Inscripciones activas del profesor:" << std::endl;
+        for (const auto& inscripcion : inscripciones) {
+            std::cout << "- " << inscripcion << std::endl;
         }
     }
 }

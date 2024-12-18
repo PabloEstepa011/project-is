@@ -1,36 +1,25 @@
 #include "gestorAlumno.h"
 #include <iostream>
-#include <vector>
+#include <string>
 
-// Constructor por defecto
-GestorAlumno::GestorAlumno() {
-    // Inicialización de atributos si es necesario
-}
+GestorAlumno::GestorAlumno(){}
 
-// Método para inscribir una plaza
-void GestorAlumno::inscribirPlaza(const std::string& plaza) {
-    plazasInscritas.push_back(plaza);
-    std::cout << "Plaza " << plaza << " inscrita correctamente." << std::endl;
-}
-
-// Método para anular una plaza
-void GestorAlumno::anularPlaza(const std::string& plaza) {
+// Función para inscribir a un alumno en una plaza
+void GestorAlumno::inscribirPlaza(){
 
 }
 
-// Método para confirmar una plaza
-void GestorAlumno::confirmarPlaza(const std::string& plaza) {
-   
+// Función para anular la inscripción de un alumno
+void GestorAlumno::anularPlaza(){
+
 }
 
-// Método para visualizar todas las inscripciones
-void GestorAlumno::visualizarInscripciones() const {
-    if (plazasInscritas.empty()) {
-        std::cout << "No hay inscripciones." << std::endl;
-    } else {
-        std::cout << "Plazas inscritas:" << std::endl;
-        for (const auto& plaza : plazasInscritas) {
-            std::cout << "- " << plaza << std::endl;
-        }
-    }
+// Función para confirmar una plaza
+void confirmarPlaza(){
+    std::cout << "Función confirmar plaza aún no implementada.\n";
+}
+
+// Función para visualizar inscripciones
+void GestorAlumno::visualizarInscripciones(){
+
 }

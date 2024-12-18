@@ -1,28 +1,19 @@
 #ifndef PROFESORDATA_H
 #define PROFESORDATA_H
 
+#include "Profesor.h"
 #include <string>
-#include <vector>
-
-// Estructura para manejar la información del profesor
-struct Profesor {
-    std::string nombre;
-    std::string apellido;
-    int idPlaza;
-    std::string estado; // "Inscrito", "Anulado", "Confirmado"
-};
 
 class ProfesorData {
-public:
-    // Constructor
-    ProfesorData(const std::string& archivo);
-
-    // Métodos
-    std::vector<Profesor> cargarProfesores();
-    void guardarProfesores(const std::vector<Profesor>& profesores);
-
 private:
-    std::string archivoProfesores; // Ruta del archivo
+    std::string archivo; // Nombre del archivo
+
+public:
+    explicit ProfesorData(const std::string& archivo);
+    
+    // Métodos para leer y escribir datos
+    Profesor leerDatos() const;
+    void escribirDatos(const Profesor& profesor) const;
 };
 
 #endif // PROFESORDATA_H

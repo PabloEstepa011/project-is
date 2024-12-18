@@ -7,7 +7,7 @@ MenuAlumno::MenuAlumno() {
 }
 
 // Mostrar el menú principal del alumno
-void MenuAlumno::mostrarMenu() const {
+void MenuAlumno::mostrarMenu(){
     int opcion;
     std::cout << "==== Menu Alumno ====" << std::endl;
     std::cout << "1. Visualizar inscripciones\n";

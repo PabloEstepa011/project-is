@@ -19,11 +19,6 @@ public:
     Profesor(const std::string& nombre, const std::string& apellidos, int DNI, int telefono, 
              const std::string& correo, const std::string& grados_profesa);
 
-    // Métodos de gestión de inscripciones
-    void inscribirPlaza(const std::string& plaza);
-    void anularPlaza(const std::string& plaza);
-    void confirmarPlaza(const std::string& plaza);
-    void visualizarInscripciones() const;
 
     // Métodos getters
     std::string getNombre() const;

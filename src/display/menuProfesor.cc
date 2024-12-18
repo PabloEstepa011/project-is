@@ -7,7 +7,7 @@ MenuProfesor::MenuProfesor() {
 }
 
 // Mostrar el menú principal del profesor
-void MenuProfesor::mostrarMenu() const {
+void MenuProfesor::mostrarMenu(){
     int opcion;
     std::cout << "==== Menu Profesor ====" << std::endl;
     std::cout << "1. Visualizar inscripciones\n";
