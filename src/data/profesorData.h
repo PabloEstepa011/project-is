@@ -1,15 +1,14 @@
 #ifndef PROFESORDATA_H
 #define PROFESORDATA_H
 
-#include "Profesor.h"
+#include "business/profesor.h"
 #include <string>
 
 class ProfesorData {
 private:
-    std::string archivo; // Nombre del archivo
+    const std::string archivo = "bbdd/profesores.txt"; // Nombre del archivo
 
 public:
-    explicit ProfesorData(const std::string& archivo);
     
     // Métodos para leer y escribir datos
     Profesor leerDatos() const;

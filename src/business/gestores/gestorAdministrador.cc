@@ -1,157 +1,125 @@
 #include "gestorAdministrador.h"
-#include "alumno.h"         // Se incluye porque se crean instancias de Alumno
-#include "alumnoData.h"     // Para interactuar con la capa de datos
+#include "data/alumnoData.h"
+#include "data/profesorData.h"
 #include <iostream>
 #include <string>
+#include <list>
+#include <algorithm>
 
 // Constructor
-GestorAdministrador::GestorAdministrador() {}
+GestorAdministrador::GestorAdministrador()
+    : alumno("", "", 0, 0, "", "", 0), profesor("", "", 0, 0, "", ""), 
+      alumnoData("alumnos.txt"), profesorData("profesores.txt") {}
 
+// Función para añadir un alumno
 void GestorAdministrador::añadirAlumno() {
-    std::string nombre;
-    std::string apellidos;
-    int DNI;
-    int telefono;
-    std::string correo;
-    std::string grados_matriculado;
-    int curso_grado;
+    std::string nombre, apellidos, correo, gradosMatriculado;
+    int DNI, telefono, cursoGrado;
 
-    std::cout << "\n--- Añadir Alumno ---\n";
-    std::cout << "Nombre: ";
-    std::getline(std::cin, nombre);
+    std::cout << "Introduce los datos del alumno:\n";
+    std::cout << "Nombre: "; std::getline(std::cin, nombre);
+    std::cout << "Apellidos: "; std::getline(std::cin, apellidos);
+    std::cout << "DNI: "; std::cin >> DNI;
+    std::cout << "Teléfono: "; std::cin >> telefono;
+    std::cin.ignore(); // Consumir el salto de línea
+    std::cout << "Correo: "; std::getline(std::cin, correo);
+    std::cout << "Grados matriculados: "; std::getline(std::cin, gradosMatriculado);
+    std::cout << "Curso del grado: "; std::cin >> cursoGrado;
+    std::cin.ignore(); // Consumir el salto de línea
 
-    std::cout << "Apellidos: ";
-    std::getline(std::cin, apellidos);
-
-    std::cout << "DNI: ";
-    std::cin >> DNI;
-
-    std::cout << "Teléfono: ";
-    std::cin >> telefono;
-    std::cin.ignore(); // Limpia el buffer de entrada
-
-    std::cout << "Correo: ";
-    std::getline(std::cin, correo);
-
-    std::cout << "Grados Matriculado: ";
-    std::getline(std::cin, grados_matriculado);
-
-    std::cout << "Curso del Grado: ";
-    std::cin >> curso_grado;
-    std::cin.ignore();
-
-    // Crear instancia del alumno
-    Alumno nuevoAlumno(nombre, apellidos, DNI, telefono, correo, grados_matriculado, curso_grado);
-
-    // Llamada a la capa data para guardar los datos
-    AlumnoData::guardarAlumno(nuevoAlumno);
+    Alumno nuevoAlumno(nombre, apellidos, DNI, telefono, correo, gradosMatriculado, cursoGrado);
+    alumnoData.escribirDatos(nuevoAlumno); // Guardar el nuevo alumno
     std::cout << "Alumno añadido correctamente.\n";
 }
 
+// Función para borrar un alumno
 void GestorAdministrador::borrarAlumno() {
     int DNI;
-
-    std::cout << "\n--- Borrar Alumno ---\n";
-    std::cout << "DNI del alumno a borrar: ";
+    std::cout << "Introduce el DNI del alumno que deseas borrar: ";
     std::cin >> DNI;
-    std::cin.ignore(); // Limpia el buffer de entrada
+    std::cin.ignore(); // Consumir el salto de línea
 
-    bool resultado = AlumnoData::eliminarAlumno(DNI);
+    // Leer todos los alumnos y eliminar el que tenga el DNI dado
+    std::list<Alumno> alumnos = alumnoData.leerTodos();
+    size_t original_size = alumnos.size();
+    alumnos.remove_if([DNI](const Alumno& a) { return a.getDNI() == DNI; });
 
-    if (resultado) {
-        std::cout << "Alumno eliminado correctamente.\n";
+    if (alumnos.size() < original_size) {
+        alumnoData.escribirTodos(alumnos); // Actualizar el archivo
+        std::cout << "Alumno borrado correctamente.\n";
     } else {
-        std::cout << "No se encontró un alumno con el DNI proporcionado.\n";
+        std::cout << "No se encontró un alumno con ese DNI.\n";
     }
 }
 
+// Función para listar alumnos
 void GestorAdministrador::listarAlumno() {
-    std::cout << "\n--- Listar Alumnos ---\n";
-
-    auto listaAlumnos = AlumnoData::obtenerAlumnos();
-
-    if (listaAlumnos.empty()) {
+    std::list<Alumno> alumnos = alumnoData.leerTodos();
+    if (alumnos.empty()) {
         std::cout << "No hay alumnos registrados.\n";
-        return;
-    }
-
-    for (const auto& alumno : listaAlumnos) {
-        std::cout << "Nombre: " << alumno.getNombre() << " " << alumno.getApellidos() << "\n"
-                  << "DNI: " << alumno.getDNI() << "\n"
-                  << "Teléfono: " << alumno.getTelefono() << "\n"
-                  << "Correo: " << alumno.getCorreo() << "\n"
-                  << "Grados Matriculado: " << alumno.getGradosMatriculado() << "\n"
-                  << "Curso del Grado: " << alumno.getCursoGrado() << "\n";
-        std::cout << "----------------------------\n";
+    } else {
+        std::cout << "Lista de alumnos registrados:\n";
+        for (const auto& alumno : alumnos) {
+            std::cout << "Nombre: " << alumno.getNombre()
+                      << ", Apellidos: " << alumno.getApellidos()
+                      << ", DNI: " << alumno.getDNI()
+                      << ", Teléfono: " << alumno.getTelefono() << '\n';
+        }
     }
 }
 
+// Función para añadir un profesor
 void GestorAdministrador::añadirProfesor() {
-    std::string nombre;
-    std::string apellidos;
-    int DNI;
-    int telefono;
-    std::string correo;
-    std::string departamento;
+    std::string nombre, apellidos, correo, gradosProfesa;
+    int DNI, telefono;
 
-    std::cout << "\n--- Añadir Profesor ---\n";
-    std::cout << "Nombre: ";
-    std::getline(std::cin, nombre);
+    std::cout << "Introduce los datos del profesor:\n";
+    std::cout << "Nombre: "; std::getline(std::cin, nombre);
+    std::cout << "Apellidos: "; std::getline(std::cin, apellidos);
+    std::cout << "DNI: "; std::cin >> DNI;
+    std::cout << "Teléfono: "; std::cin >> telefono;
+    std::cin.ignore(); // Consumir el salto de línea
+    std::cout << "Correo: "; std::getline(std::cin, correo);
+    std::cout << "Grados que profesa: "; std::getline(std::cin, gradosProfesa);
 
-    std::cout << "Apellidos: ";
-    std::getline(std::cin, apellidos);
-
-    std::cout << "DNI: ";
-    std::cin >> DNI;
-
-    std::cout << "Teléfono: ";
-    std::cin >> telefono;
-    std::cin.ignore(); // Limpia el buffer de entrada
-
-    std::cout << "Correo: ";
-    std::getline(std::cin, correo);
-
-    std::cout << "Departamento: ";
-    std::getline(std::cin, departamento);
-
-    // Crear instancia del profesor y guardar usando el gestorProfesor
-    gestorProfesor.añadirProfesor(nombre, apellidos, DNI, telefono, correo, departamento);
+    Profesor nuevoProfesor(nombre, apellidos, DNI, telefono, correo, gradosProfesa);
+    profesorData.escribirDatos(nuevoProfesor); // Guardar el nuevo profesor
     std::cout << "Profesor añadido correctamente.\n";
 }
 
+// Función para borrar un profesor
 void GestorAdministrador::borrarProfesor() {
     int DNI;
-
-    std::cout << "\n--- Borrar Profesor ---\n";
-    std::cout << "DNI del profesor a borrar: ";
+    std::cout << "Introduce el DNI del profesor que deseas borrar: ";
     std::cin >> DNI;
-    std::cin.ignore(); // Limpia el buffer de entrada
+    std::cin.ignore(); // Consumir el salto de línea
 
-    bool resultado = gestorProfesor.borrarProfesor(DNI);
+    // Leer todos los profesores y eliminar el que tenga el DNI dado
+    std::list<Profesor> profesores = profesorData.leerTodos();
+    size_t original_size = profesores.size();
+    profesores.remove_if([DNI](const Profesor& p) { return p.getDNI() == DNI; });
 
-    if (resultado) {
-        std::cout << "Profesor eliminado correctamente.\n";
+    if (profesores.size() < original_size) {
+        profesorData.escribirTodos(profesores); // Actualizar el archivo
+        std::cout << "Profesor borrado correctamente.\n";
     } else {
-        std::cout << "No se encontró un profesor con el DNI proporcionado.\n";
+        std::cout << "No se encontró un profesor con ese DNI.\n";
     }
 }
 
+// Función para listar profesores
 void GestorAdministrador::listarProfesor() {
-    std::cout << "\n--- Listar Profesores ---\n";
-
-    auto listaProfesores = gestorProfesor.listarProfesores();
-
-    if (listaProfesores.empty()) {
+    
+    std::list<Profesor> profesores = profesorData.leerTodos();
+    if (profesores.empty()) {
         std::cout << "No hay profesores registrados.\n";
-        return;
-    }
-
-    for (const auto& profesor : listaProfesores) {
-        std::cout << "Nombre: " << profesor.getNombre() << " " << profesor.getApellidos() << "\n"
-                  << "DNI: " << profesor.getDNI() << "\n"
-                  << "Teléfono: " << profesor.getTelefono() << "\n"
-                  << "Correo: " << profesor.getCorreo() << "\n"
-                  << "Departamento: " << profesor.getDepartamento() << "\n";
-        std::cout << "----------------------------\n";
+    } else {
+        std::cout << "Lista de profesores registrados:\n";
+        for (const auto& profesor : profesores) {
+            std::cout << "Nombre: " << profesor.getNombre()
+                      << ", Apellidos: " << profesor.getApellidos()
+                      << ", DNI: " << profesor.getDNI()
+                      << ", Teléfono: " << profesor.getTelefono() << '\n';
+        }
     }
 }

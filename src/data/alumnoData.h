@@ -1,7 +1,7 @@
 #ifndef ALUMNODATA_H
 #define ALUMNODATA_H
 
-#include "Alumno.h"
+#include "business/alumno.h"
 #include <string>
 
 class AlumnoData {

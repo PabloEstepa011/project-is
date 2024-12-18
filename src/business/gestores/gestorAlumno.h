@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <alumno.h>
+#include <business/alumno.h>
 
 class GestorAlumno{
     public:

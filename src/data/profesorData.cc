@@ -3,8 +3,6 @@
 #include <sstream>
 #include <iostream>
 
-// Constructor
-ProfesorData::ProfesorData(const std::string& archivo) : archivo(archivo) {}
 
 // Leer datos desde el archivo
 Profesor ProfesorData::leerDatos() const {

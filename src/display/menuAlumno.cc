@@ -26,5 +26,6 @@ void MenuAlumno::mostrarMenu(){
             //gestorAlumno.anularPlaza();
             break;
         default:
+            std::cout << "Error, elige otra opcion" << std::endl;
     }
 }

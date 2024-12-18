@@ -1,8 +1,8 @@
 #ifndef GESTORADMINISTRADOR_H
 #define GESTORADMINISTRADOR_H
 
-#include "gestorAlumno.h"
-#include "gestorProfesor.h"
+#include "business/alumno.h"
+#include "business/profesor.h"
 
 class GestorAdministrador {
 public:
@@ -20,8 +20,8 @@ public:
 
 private:
     // Atributos: Gestores necesarios para las operaciones
-    GestorAlumno gestorAlumno;
-    GestorProfesor gestorProfesor;
+    Alumno alumno;
+    Profesor profesor;
     // Aquí pueden agregarse más gestores para intercambios y planes
 };
 
