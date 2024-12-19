@@ -3,6 +3,8 @@
 #include <iostream>
 
 // Constructor
+Alumno::Alumno() {}
+
 Alumno::Alumno(const std::string& nombre, const std::string& apellidos, int DNI, int telefono, 
                const std::string& correo, const std::string& grados_matriculado, int curso_grado)
     : nombre(nombre), apellidos(apellidos), DNI(DNI), telefono(telefono), 

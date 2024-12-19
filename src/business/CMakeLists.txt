@@ -10,11 +10,7 @@ set(BUSINESS_SOURCES
 )
 
 # Crear la biblioteca estática para la parte de negocio
-add_library(business STATIC ${BUSINESS_SOURCES})
-
-# Incluir directorios para los archivos de cabecera
-target_include_directories(business PUBLIC  ${CMAKE_CURRENT_LIST_DIR}
-                                            ${PROJECT_SOURCE_DIR}/src/business)
+add_library(business ${BUSINESS_SOURCES})
 
 # Añadir subdirectorios de los gestores
 add_subdirectory(gestores)

@@ -1,9 +1,10 @@
 #ifndef GESTORALUMNO_H
 #define GESTORALUMNO_H
 
+#include "alumno.h"
 #include <string>
 #include <iostream>
-#include "../alumno.h"
+
 
 class GestorAlumno{
     public:

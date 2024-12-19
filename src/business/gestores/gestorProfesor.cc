@@ -1,9 +1,11 @@
 #include "gestorProfesor.h"
-#include "../../data/profesorData.h"
+#include "profesorData.h"
 #include <iostream>
 #include <algorithm>
+#include "profesor.h"
 
 // Constructor
+GestorProfesor::GestorProfesor() : profesor() {}
 
 // Inscribir a un profesor en una plaza
 void GestorProfesor::inscribirPlazaProfesor() {

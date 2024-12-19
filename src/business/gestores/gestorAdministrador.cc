@@ -1,6 +1,6 @@
 #include "gestorAdministrador.h"
-#include "../../data/alumnoData.h"
-#include "../../data/profesorData.h"
+#include "alumnoData.h"
+#include "profesorData.h"
 #include <iostream>
 #include <string>
 #include <list>

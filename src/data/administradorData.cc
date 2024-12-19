@@ -4,6 +4,7 @@
 #include <sstream>
 
 // Constructor: inicializa el nombre del archivo
+AdministradorData::AdministradorData() {}
 
 // Método para cargar los administradores desde el archivo
 std::vector<Administrador> AdministradorData::cargarAdministradores() {

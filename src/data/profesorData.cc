@@ -2,7 +2,10 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include "profesor.h"
 
+
+ProfesorData::ProfesorData(){}
 
 // Leer datos desde el archivo
 std::list<Profesor> ProfesorData::leerDatos() const {

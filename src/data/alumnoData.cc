@@ -3,9 +3,11 @@
 #include <sstream>
 #include <iostream>
 #include <list>
+#include "alumno.h"
 
 
 // Constructor
+AlumnoData::AlumnoData() {}
 
 // Leer datos desde el archivo
 std::list<Alumno> AlumnoData::leerDatos() const {

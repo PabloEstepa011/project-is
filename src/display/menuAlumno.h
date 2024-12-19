@@ -1,7 +1,7 @@
 #ifndef MENU_ALUMNO_H
 #define MENU_ALUMNO_H
 
-#include "../business/gestores/gestorAlumno.h"
+#include "gestorAlumno.h"
 
 class MenuAlumno {
 public:

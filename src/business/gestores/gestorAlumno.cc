@@ -1,9 +1,11 @@
 #include "gestorAlumno.h"
-#include "../../data/alumnoData.h"
+#include "alumnoData.h"
 #include <iostream>
 #include <algorithm>
+#include "alumno.h"
 
 // Constructor
+GestorAlumno::GestorAlumno() : alumno(){}
 
 // Función para inscribir a un alumno en una plaza
 void GestorAlumno::inscribirPlaza() {
@@ -42,7 +44,6 @@ void GestorAlumno::anularPlaza() {
 
 // Función para visualizar inscripciones
 void GestorAlumno::visualizarInscripciones() {
-    AlumnoData alumnoData;
     auto inscripciones = alumno.getInscripciones();
 
     if (inscripciones.empty()) {

@@ -24,7 +24,7 @@ void MenuAdministrador::mostrarMenu() {
                 gestionarProfesores();
                 break;
             case 3:
-                gestionarPlanesConvalidacion();
+                //gestionarPlanesConvalidacion();
                 break;
             case 4:
                 std::cout << "Saliendo del menú administrador...\n";

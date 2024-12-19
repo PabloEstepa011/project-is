@@ -8,7 +8,6 @@ set(DATA_SOURCES
 )
 
 # Crear la biblioteca estática para los datos
-add_library(data STATIC ${DATA_SOURCES})
+add_library(data ${DATA_SOURCES})
 
-# Incluir directorios para los archivos de cabecera
-target_include_directories(data PUBLIC ${CMAKE_SOURCE_DIR}/src/data)
+target_include_directories(data PUBLIC ${PROJECT_SOURCE_DIR}/src/business)

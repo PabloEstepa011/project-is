@@ -1,7 +1,7 @@
 #ifndef ALUMNODATA_H
 #define ALUMNODATA_H
 
-#include "../business/alumno.h"
+#include "alumno.h"
 #include <string>
 #include <list>
 
@@ -10,7 +10,7 @@ private:
     const std::string archivo = "bbdd/alumnos.txt"; // Nombre del archivo
 
 public:
-    explicit AlumnoData();
+    AlumnoData();
     
     // Métodos para leer y escribir datos
     std::list<Alumno> leerDatos() const;

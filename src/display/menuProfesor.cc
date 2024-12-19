@@ -14,6 +14,7 @@ void MenuProfesor::mostrarMenu(){
     std::cout << "2. Inscribir plaza\n";
     std::cout << "3. Anular plaza\n";
     std::cout << "Seleccione una opción: ";
+    std::cin >> opcion;
 
     switch (opcion) {
         case 1:

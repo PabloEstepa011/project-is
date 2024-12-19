@@ -1,7 +1,7 @@
 #ifndef MENU_PROFESOR_H
 #define MENU_PROFESOR_H
 
-#include "../business/gestores/gestorProfesor.h"
+#include "gestorProfesor.h"
 
 class MenuProfesor {
 public:

@@ -2,6 +2,8 @@
 #include <iostream>
 
 // Constructor
+Profesor::Profesor(){}
+
 Profesor::Profesor(const std::string& nombre, const std::string& apellidos, int DNI, int telefono, 
                    const std::string& correo, const std::string& grados_profesa)
     : nombre(nombre), apellidos(apellidos), DNI(DNI), telefono(telefono), 
